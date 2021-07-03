@@ -6,6 +6,7 @@
   },
   "parser": "babel-eslint",
   "rules": {
+    "no-unused-vars": "off",
     "no-plusplus": [0],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prop-types": [0],
@@ -15,6 +16,8 @@
     "react/no-danger": [0],
     "no-param-reassign": [0],
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "arrow-body-style": [0],
+    "prefer-arrow-callback": [0]
   }
 }
