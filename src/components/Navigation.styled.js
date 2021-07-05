@@ -7,22 +7,23 @@ export const NavWrapper = styled.ul`
   list-style: none;
   margin: 0 0 30px;
   padding: 0;
+  border-bottom: 0.5px solid lightgray;
 `;
 
 export const StyledNavLink = styled(Link)`
   font-size: 25px;
-  margin: 0 10px;
+  color: #2196f3;
+  margin: 0 10px 25px;
   text-decoration: none;
 
   :hover {
-    border-radius: 5px;
     text-decoration: none;
     color: blueviolet;
   }
 
   &.active {
-    font-size: 27px;
+    text-decoration: none;
     color: blueviolet;
-    font-weight: bold;
+    border-bottom: 1.5pt solid blueviolet;
   }
 `;

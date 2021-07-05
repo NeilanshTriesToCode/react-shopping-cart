@@ -9,7 +9,7 @@ const Homepage = () => {
     <div>
       <Title
         title="Shopping Cart"
-        subtitle="Everything and anything you need"
+        subtitle="Anything and everything you need"
       />
       <Navigation />
     </div>
