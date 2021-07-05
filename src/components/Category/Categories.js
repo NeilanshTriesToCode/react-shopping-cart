@@ -1,19 +1,22 @@
 // React Component for list of Categories
 
 import React from 'react';
-import CategoryGrid from './CategoryGrid';
-import { getCategories } from '../../helpers';
+import CategoryCard from './CategoryCard';
+import categoriesData from '../../Databases/categories.json'; // get JSON database containing Categories info
 
-// const categoriesData = data.json();
-getCategories().then(categoryInfo => {
-  // eslint-disable-next-line no-console
-  console.log(categoryInfo.length);
-});
+// console.log(categoriesData);
 
 const Category = () => {
   return (
     <div>
-      <p>h</p>
+      {categoriesData.map(category => (
+        <CategoryCard
+          key={category.id}
+          id={category.id}
+          name={category.name}
+          description={category.description}
+        />
+      ))}
     </div>
   );
 };
