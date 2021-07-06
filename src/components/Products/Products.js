@@ -3,39 +3,36 @@
 
 import React, { useState, useCallback, useEffect } from 'react';
 import { useParams } from 'react-router';
+import { StyledDivider } from '../../styled';
 import ProductCard from './ProductCard';
 
 import productsData from '../../Databases/products.json'; // hard-coded JSON Products database
+
+/* 
+     If the user navigates to the Products page through the Categories page (by clicking on a Category), 
+     show Products only from the Category that was clicked on.
+     Show all Products if the user directly navigates to the Products page.
+   */
+function getInitialProducts(data, cid) {
+  let newProducts = data;
+  if (cid !== 'allProducts') {
+    newProducts = data.filter(product => product.categoryId === cid);
+  }
+  return newProducts;
+}
 
 const Products = () => {
   // getting categoryId from the page URL
   const { cid } = useParams();
 
   // initial state for products
-  const [products, setProducts] = useState(null);
-
-  /* 
-     If the user navigates to the Products page through the Categories page (by clicking on a Category), 
-     show Products only from the Category that was clicked on.
-     Show all Products if the user directly navigates to the Products page.
-   */
-  const getProducts = useCallback(() => {
-    if (cid !== 'allProducts') {
-      const newProducts = productsData.filter(
-        product => product.categoryId === cid
-      );
-      setProducts(newProducts);
-    } else {
-      setProducts(productsData);
-    }
-  }, [cid]);
-
-  useEffect(() => {
-    getProducts();
-  }, [getProducts]);
+  const [products, setProducts] = useState(
+    getInitialProducts(productsData, cid)
+  );
 
   return (
     <div>
+      <StyledDivider />
       {products.map(product => (
         <ProductCard
           id={product.id}

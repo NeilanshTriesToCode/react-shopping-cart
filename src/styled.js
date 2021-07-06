@@ -27,4 +27,45 @@ export const CardWrapper = styled.div`
   :hover {
     box-shadow: 1px 2px 5px grey;
   }
+
+  // class for Product Cards
+  &.product-card {
+    height: 500px;
+    width: 550px;
+
+    .text-container {
+      h3 {
+        color: black;
+      }
+
+      p {
+        font-size: 15px;
+        font-weight: 700;
+      }
+    }
+
+    .text-green {
+      color: ${({ theme }) => theme.mainColors.green};
+    }
+
+    .text-red {
+      font-style: italic;
+      color: ${({ theme }) => theme.mainColors.red};
+    }
+
+    .text-blue {
+      color: ${({ theme }) => theme.mainColors.blue};
+    }
+  }
+
+  .img-wrapper {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 10px;
+
+    img {
+      height: 250px;
+      width: 100%;
+    }
+  }
 `;

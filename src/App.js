@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 import 'rsuite/dist/styles/rsuite-default.css';
 import './styles/main.scss';
 
@@ -8,9 +9,18 @@ import Categories from './components/Category/Categories';
 import Products from './components/Products/Products';
 import Checkout from './components/Checkout/Checkout';
 
+// propsn to be sent to ThemeProvider
+const theme = {
+  mainColors: {
+    blue: '#2196f3',
+    red: '#ff0000',
+    green: '#32cd32',
+  },
+};
+
 function App() {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Homepage />
         <Switch>
@@ -21,7 +31,7 @@ function App() {
           <Route eaxct path="/checkout" component={Checkout} />
         </Switch>
       </BrowserRouter>
-    </div>
+    </ThemeProvider>
   );
 }
 
