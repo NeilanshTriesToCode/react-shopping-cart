@@ -6,7 +6,9 @@ export const TitleWrapper = styled.div`
 
   h1 {
     color: blueviolet;
-    letter-spacing: 5px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-style: italic;
     margin-bottom: 15px;
   }
 

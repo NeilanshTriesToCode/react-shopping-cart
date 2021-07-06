@@ -7,7 +7,7 @@ export const NavWrapper = styled.ul`
   list-style: none;
   margin: 0 0 30px;
   padding: 0;
-  border-bottom: 0.5px solid lightgray;
+  //border-bottom: 0.5px solid lightgray;
 `;
 
 export const StyledNavLink = styled(Link)`

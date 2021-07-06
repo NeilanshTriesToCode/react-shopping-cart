@@ -10,7 +10,7 @@ const Navigation = () => {
   // list of Nav links
   const LINKS = [
     { to: '/categories', linkName: 'Categories' },
-    { to: '/products', linkName: 'Products' },
+    { to: '/products/:cid', linkName: 'Products' },
     { to: '/checkout', linkName: 'Checkout' },
   ];
 

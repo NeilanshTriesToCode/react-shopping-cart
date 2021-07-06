@@ -7,6 +7,7 @@ export const CardGrid = styled.div`
 `;
 
 export const CardWrapper = styled.div`
+  background-color: whitesmoke;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
