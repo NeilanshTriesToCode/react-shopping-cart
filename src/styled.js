@@ -1,9 +1,17 @@
 // re-usable styles for Components
 import styled from 'styled-components';
+import { Divider } from 'rsuite';
 
 export const CardGrid = styled.div`
   text-align: center;
   justify-content: center;
+`;
+
+export const StyledDivider = styled(Divider)`
+  width: 50%;
+  background-color: lightgrey;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const CardWrapper = styled.div`

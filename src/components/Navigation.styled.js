@@ -5,8 +5,6 @@ export const NavWrapper = styled.ul`
   display: flex;
   justify-content: center;
   list-style: none;
-  margin: 0 0 30px;
-  padding: 0;
   //border-bottom: 0.5px solid lightgray;
 `;
 

@@ -1,5 +1,5 @@
 // React Component to Navigate to different pages of the App
-import React from 'react';
+import React, { memo } from 'react';
 import { useLocation } from 'react-router';
 import { NavWrapper, StyledNavLink } from './Navigation.styled';
 
@@ -10,7 +10,7 @@ const Navigation = () => {
   // list of Nav links
   const LINKS = [
     { to: '/categories', linkName: 'Categories' },
-    { to: '/products/:cid', linkName: 'Products' },
+    { to: '/products/allProducts', linkName: 'Products' },
     { to: '/checkout', linkName: 'Checkout' },
   ];
 
@@ -29,4 +29,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default memo(Navigation);

@@ -11,7 +11,18 @@ const ProductCard = ({
   thumbnail,
   categoryId,
 }) => {
-  return <div>ProductCard</div>;
+  return (
+    <div>
+      <p>{id}</p>
+      <p>{name}</p>
+      <p>{price}</p>
+      <p>{currency}</p>
+      <p>{delivery}</p>
+      <p>{inStock}</p>
+      <p>{thumbnail}</p>
+      <p>{categoryId}</p>
+    </div>
+  );
 };
 
 export default ProductCard;
