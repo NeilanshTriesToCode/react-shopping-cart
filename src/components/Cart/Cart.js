@@ -1,17 +1,18 @@
 // React Component for Cart
 import React from 'react';
 import { Icon, Button } from 'rsuite';
+import { CartWrapper } from './Cart.styled';
 
 import NumProductsBadge from './NumProductsBadge';
 
 const Cart = () => {
   return (
-    <div style={{ float: 'right' }}>
+    <CartWrapper>
       <Button>
         <Icon icon="shopping-basket" />
       </Button>
       <NumProductsBadge />
-    </div>
+    </CartWrapper>
   );
 };
 

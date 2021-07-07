@@ -11,18 +11,17 @@ export const NavWrapper = styled.ul`
 
 export const StyledNavLink = styled(Link)`
   font-size: 25px;
-  color: #2196f3;
+  color: black;
   margin: 0 15px 2px; // center-margin: spacing between each StyledNavLink, last-margin: similar to margin-bottom
   text-decoration: none;
 
   :hover {
     text-decoration: none;
-    color: blueviolet;
+    color: #2196f3;
   }
 
   &.active {
     text-decoration: none;
-    color: blueviolet;
-    border-bottom: 1.5pt solid blueviolet;
+    color: #2196f3;
   }
 `;
