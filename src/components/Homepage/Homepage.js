@@ -10,10 +10,7 @@ const Homepage = () => {
   return (
     <>
       <HomeWrapper>
-        <Title
-          title="Shopping Cart"
-          subtitle="Anything and everything you need"
-        />
+        <Title title="Shopping Cart" subtitle="" />
         <Cart />
       </HomeWrapper>
       <Navigation />

@@ -39,22 +39,30 @@ export const CardWrapper = styled.div`
       }
 
       p {
-        font-size: 15px;
-        font-weight: 700;
+        font-size: 17px;
       }
     }
 
     .text-green {
+      font-weight: 500;
       color: ${({ theme }) => theme.mainColors.green};
     }
 
     .text-red {
+      font-weight: 600;
       font-style: italic;
       color: ${({ theme }) => theme.mainColors.red};
     }
 
     .text-blue {
+      font-weight: 500;
       color: ${({ theme }) => theme.mainColors.blue};
+    }
+
+    .text-black {
+      font-weight: 600;
+      font-style: italic;
+      color: ${({ theme }) => theme.mainColors.black};
     }
   }
 

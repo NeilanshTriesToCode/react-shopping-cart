@@ -2,15 +2,16 @@
 import React from 'react';
 import { Avatar } from 'rsuite';
 
-const NumProductsBadge = () => {
+const NumProductsAvatar = () => {
   return (
     <>
       <Avatar
         circle
         size="sm"
         style={{
-          background: '#f5f5f5',
-          color: 'black',
+          background: 'grey',
+          color: '#f5f5f5',
+          marginLeft: '12px',
         }}
       >
         3
@@ -19,4 +20,4 @@ const NumProductsBadge = () => {
   );
 };
 
-export default NumProductsBadge;
+export default NumProductsAvatar;

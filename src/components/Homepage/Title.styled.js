@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 export const TitleWrapper = styled.div`
   text-align: center;
-  margin-left: 590px;
+  justify-content: center;
+  margin-left: 620px;
   margin-right: auto;
+  padding-right: 15px;
 
   h1 {
     color: whitesmoke;
