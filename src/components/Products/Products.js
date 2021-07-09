@@ -2,6 +2,7 @@
 // This Component also allows users to use filters for their search
 
 import React, { useState, useCallback, useEffect } from 'react';
+import { Loader } from 'rsuite';
 import { useParams } from 'react-router';
 import { StyledDivider } from '../../styled';
 import ProductCard from './ProductCard';
@@ -25,6 +26,9 @@ const Products = () => {
   // getting categoryId from the page URL
   const { cid } = useParams();
 
+  // state for loading
+  const [isLoading, setIsLoading] = useState(false);
+
   // initial state for products
   const [products, setProducts] = useState(
     getInitialProducts(productsData, cid)
@@ -32,20 +36,22 @@ const Products = () => {
 
   return (
     <div>
+      {isLoading && <Loader speed="normal" center content="loading.." />}
       <StyledDivider />
-      {products.map(product => (
-        <ProductCard
-          key={product.id}
-          id={product.id}
-          name={product.name}
-          price={product.price}
-          currency={product.currency}
-          delivery={product.delivery}
-          inStock={product.inStock}
-          thumbnail={product.thumbnail}
-          categoryId={product.categoryId}
-        />
-      ))}
+      {!isLoading &&
+        products.map(product => (
+          <ProductCard
+            key={product.id}
+            id={product.id}
+            name={product.name}
+            price={product.price}
+            currency={product.currency}
+            delivery={product.delivery}
+            inStock={product.inStock}
+            thumbnail={product.thumbnail}
+            categoryId={product.categoryId}
+          />
+        ))}
     </div>
   );
 };

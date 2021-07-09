@@ -8,6 +8,7 @@ import Homepage from './components/Homepage/Homepage';
 import Categories from './components/Category/Categories';
 import Products from './components/Products/Products';
 import Checkout from './components/Checkout/Checkout';
+import { ShoppingCartProvider } from './context/shoppingCart.context';
 
 // propsn to be sent to ThemeProvider
 const theme = {
@@ -21,18 +22,20 @@ const theme = {
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Homepage />
-        <Switch>
-          <Route exact path="/categories" component={Categories} />
+    <ShoppingCartProvider>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Homepage />
+          <Switch>
+            <Route exact path="/categories" component={Categories} />
 
-          <Route exact path="/products/:cid" component={Products} />
+            <Route exact path="/products/:cid" component={Products} />
 
-          <Route eaxct path="/checkout" component={Checkout} />
-        </Switch>
-      </BrowserRouter>
-    </ThemeProvider>
+            <Route eaxct path="/checkout" component={Checkout} />
+          </Switch>
+        </BrowserRouter>
+      </ThemeProvider>
+    </ShoppingCartProvider>
   );
 }
 

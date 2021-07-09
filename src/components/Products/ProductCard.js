@@ -30,7 +30,7 @@ const ProductCard = ({
             {inStock ? 'In stock' : 'Out of stock'}
           </p>
         </div>
-        <AddToCart />
+        <AddToCart inStock={inStock} />
       </CardWrapper>
     </>
   );

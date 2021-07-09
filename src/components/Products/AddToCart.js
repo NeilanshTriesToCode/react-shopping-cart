@@ -2,10 +2,10 @@
 import React from 'react';
 import { Icon, Button } from 'rsuite';
 
-const AddToCart = () => {
+const AddToCart = ({ inStock }) => {
   return (
     <div style={{ float: 'right' }}>
-      <Button color="blue">
+      <Button color="blue" disabled={!inStock}>
         <Icon icon="shopping-cart" /> Add to Cart
       </Button>
     </div>
