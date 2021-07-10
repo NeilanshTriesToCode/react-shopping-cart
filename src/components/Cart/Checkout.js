@@ -1,8 +1,8 @@
 // React Component for the Checkout page
 import React from 'react';
 import { Panel } from 'rsuite';
-import CartProducts from './CartProducts';
 
+import ChangeProductQtyBtn from './ChangeProductQtyBtn';
 import { StyledTable } from './Checkout.styled';
 
 const Checkout = () => {
@@ -23,7 +23,33 @@ const Checkout = () => {
           </thead>
 
           <tbody>
-            <CartProducts />
+            <tr>
+              <td>img</td>
+              <td>name</td>
+              <td>price</td>
+              <td>
+                <ChangeProductQtyBtn />
+              </td>
+              <td>close</td>
+            </tr>
+            <tr>
+              <td>img</td>
+              <td>name</td>
+              <td>price</td>
+              <td>
+                <ChangeProductQtyBtn />
+              </td>
+              <td>close</td>
+            </tr>
+            <tr>
+              <td>img</td>
+              <td>name</td>
+              <td>price</td>
+              <td>
+                <ChangeProductQtyBtn />
+              </td>
+              <td>close</td>
+            </tr>
           </tbody>
 
           <tfoot>Total</tfoot>

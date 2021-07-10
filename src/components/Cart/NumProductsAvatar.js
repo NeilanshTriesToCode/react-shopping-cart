@@ -2,7 +2,7 @@
 import React from 'react';
 import { Avatar } from 'rsuite';
 
-const NumProductsAvatar = () => {
+const NumProductsAvatar = ({ numProducts }) => {
   return (
     <>
       <Avatar
@@ -14,7 +14,7 @@ const NumProductsAvatar = () => {
           marginLeft: '12px',
         }}
       >
-        3
+        {numProducts}
       </Avatar>
     </>
   );
