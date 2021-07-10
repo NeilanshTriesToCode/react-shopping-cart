@@ -2,25 +2,47 @@
 import React, { createContext, useContext, useEffect, useReducer } from 'react';
 
 // states of the Shopping-Cart would be handled using the useReducer() hook.
-function shoppingCartReducer(state, action) {
+function shoppingCartReducer(prevState, action) {
   /* action is on object
-        eg.: action = {type: 'ADD'}
-    */
+        eg.: action = {
+                  type: 'ADD',
+                  productInfo: '{id, price}'  (price only mentioned in case of adding product (ADD_PRODUCT))
+                }
+  */
   switch (action.type) {
     case 'ADD_PRODUCT': {
-      return 1;
+      // return previous state along with new product info
+      return [
+        ...prevState,
+        { id: action.productInfo.id, price: action.productInfo.price, qty: 1 },
+      ];
     }
     case 'REMOVE_PRODUCT': {
-      return 2;
+      // return array with all products except the removed one.
+      return prevState.filter(product => product.id !== action.productInfo.id);
     }
-    case 'INCREASE_QTY': {
-      return 3;
+    case 'ADD_QTY': {
+      // increment product quantity by 1
+      return prevState.map(product =>
+        product.id === action.productInfo.id
+          ? { ...product, qty: product.qty + 1 }
+          : product
+      );
     }
-    case 'DECREASE_QTY': {
-      return 4;
+    case 'REDUCE_QTY': {
+      // decrement product quantity by 1
+      return prevState.map(product =>
+        product.id === action.productInfo.id
+          ? { ...product, qty: product.qty - 1 }
+          : product
+      );
+    }
+    case 'RESET_CART': {
+      // return empty array
+      return [];
     }
     default:
-      return state;
+      return prevState;
   }
 }
 
@@ -64,7 +86,7 @@ function usePersistedReducer() {
   */
   useEffect(() => {
     // store the value of Shopping-Cart in the localStorage
-    localStorage.setItem(JSON.stringify(cartState));
+    localStorage.setItem('shoppingCart', JSON.stringify(cartState));
   }, [cartState]);
 
   // return cartState and dispatch

@@ -4,14 +4,14 @@ import React from 'react';
 import { HomeWrapper } from './Homepage.styled';
 import Navigation from '../Navigation';
 import Title from './Title';
-import Cart from '../Cart/Cart';
+import CartButton from '../Cart/CartButton';
 
 const Homepage = () => {
   return (
     <>
       <HomeWrapper>
         <Title title="Shopping Cart" subtitle="" />
-        <Cart />
+        <CartButton />
       </HomeWrapper>
       <Navigation />
     </>

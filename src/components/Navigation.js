@@ -11,7 +11,6 @@ const Navigation = () => {
   const LINKS = [
     { to: '/categories', linkName: 'Categories' },
     { to: '/products/allProducts', linkName: 'Products' },
-    { to: '/checkout', linkName: 'Checkout' },
   ];
 
   return (
