@@ -2,30 +2,19 @@
 import React, { useRef } from 'react';
 import { Button, Icon } from 'rsuite';
 
-const ChangeProductQtyBtn = ({ productQty }) => {
+const ChangeProductQtyBtn = ({ id, productQty, addQty, reduceQty }) => {
   const reff = useRef();
   // use the productId and get the product quantity from the Shopping-Cart Context
 
-  // function to increase Product quantity
-  const addQty = () => {
-    // console.log(reff.current.innerText);   // gets the current qty written in the <span> element
-  };
-
-  // function to reduce Product quantity
-  const reduceQty = () => {
-    // eslint-disable-next-line no-console
-    // console.log(reff.current.innerText);  // gets the current qty written in the <span> element
-  };
-
   return (
     <>
-      <Button size="xs" onClick={addQty}>
+      <Button size="xs" onClick={() => addQty(id)}>
         <Icon icon="plus" />
       </Button>
       <span ref={reff} style={{ padding: '10px' }}>
         {productQty}
       </span>
-      <Button size="xs" onClick={reduceQty}>
+      <Button size="xs" onClick={() => reduceQty(id)}>
         <Icon icon="minus" />
       </Button>
     </>
