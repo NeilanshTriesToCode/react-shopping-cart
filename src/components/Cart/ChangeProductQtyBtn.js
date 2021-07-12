@@ -2,7 +2,7 @@
 import React, { useRef } from 'react';
 import { Button, Icon } from 'rsuite';
 
-const ChangeProductQtyBtn = ({ productId }) => {
+const ChangeProductQtyBtn = ({ productQty }) => {
   const reff = useRef();
   // use the productId and get the product quantity from the Shopping-Cart Context
 
@@ -23,7 +23,7 @@ const ChangeProductQtyBtn = ({ productId }) => {
         <Icon icon="plus" />
       </Button>
       <span ref={reff} style={{ padding: '10px' }}>
-        1
+        {productQty}
       </span>
       <Button size="xs" onClick={reduceQty}>
         <Icon icon="minus" />

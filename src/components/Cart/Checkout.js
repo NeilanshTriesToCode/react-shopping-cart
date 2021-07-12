@@ -1,12 +1,16 @@
 // React Component for the Checkout page
 import React from 'react';
-import { Panel } from 'rsuite';
+import { Button, Icon, Panel } from 'rsuite';
+
+import { useShoppingCart } from '../../misc/shoppingCart.context';
 
 import ChangeProductQtyBtn from './ChangeProductQtyBtn';
 import { StyledTable } from './Checkout.styled';
+import ShowProductInfo from './ShowProductInfo';
 
 const Checkout = () => {
   // call shoppingCart Context
+  const { cartState, dispatch } = useShoppingCart();
 
   return (
     <div>
@@ -23,33 +27,19 @@ const Checkout = () => {
           </thead>
 
           <tbody>
-            <tr>
-              <td>img</td>
-              <td>name</td>
-              <td>price</td>
-              <td>
-                <ChangeProductQtyBtn />
-              </td>
-              <td>close</td>
-            </tr>
-            <tr>
-              <td>img</td>
-              <td>name</td>
-              <td>price</td>
-              <td>
-                <ChangeProductQtyBtn />
-              </td>
-              <td>close</td>
-            </tr>
-            <tr>
-              <td>img</td>
-              <td>name</td>
-              <td>price</td>
-              <td>
-                <ChangeProductQtyBtn />
-              </td>
-              <td>close</td>
-            </tr>
+            {cartState.map(product => (
+              <tr key={product.id}>
+                <ShowProductInfo id={product.id} productPrice={product.price} />
+                <td>
+                  <ChangeProductQtyBtn productQty={product.qty} />
+                </td>
+                <td>
+                  <Button>
+                    <Icon icon="close-circle" />
+                  </Button>
+                </td>
+              </tr>
+            ))}
           </tbody>
 
           <tfoot>Total</tfoot>

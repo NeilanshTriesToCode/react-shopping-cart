@@ -7,5 +7,5 @@ export const CartWrapper = styled.div`
   height: 50%;
   margin-top: auto;
   margin-bottom: auto;
-  margin-right: 300px;
+  margin-right: 30px;
 `;

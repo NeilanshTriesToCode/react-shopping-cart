@@ -12,11 +12,11 @@ const CartButton = () => {
   // use Shopping-Cart Context to get Shopping Cart state
   const { cartState } = useShoppingCart();
 
-  // making an array consisiting of product quantities
-  const productQuantities = cartState.map(product => product.qty);
-
   // calculating total number of products
-  const numProducts = productQuantities.reduce((total, qty) => total + qty);
+  const numProducts = cartState.reduce(
+    (total, product) => total + product.qty,
+    0
+  );
 
   return (
     <CartWrapper>
