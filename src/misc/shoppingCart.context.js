@@ -11,11 +11,27 @@ function shoppingCartReducer(prevState, action) {
   */
   switch (action.type) {
     case 'ADD_PRODUCT': {
-      // return previous state along with new product info
-      return [
-        ...prevState,
-        { id: action.productInfo.id, price: action.productInfo.price, qty: 1 },
-      ];
+      // check if product already exists in Cart
+      const inCart = prevState.filter(
+        product => product.id === action.productInfo.id
+      );
+
+      // if product is not in Cart (ie. inCart.length === 0), return previous state along with new product info
+      // else, increment product quantity and return the update state
+      return inCart.length === 0
+        ? [
+            ...prevState,
+            {
+              id: action.productInfo.id,
+              price: action.productInfo.price,
+              qty: 1,
+            },
+          ]
+        : prevState.map(product =>
+            product.id === action.productInfo.id
+              ? { ...product, qty: product.qty + 1 }
+              : product
+          );
     }
     case 'REMOVE_PRODUCT': {
       // return array with all products except the removed one.
