@@ -4,7 +4,6 @@ import { Button, Icon } from 'rsuite';
 
 const ChangeProductQtyBtn = ({ id, productQty, addQty, reduceQty }) => {
   const reff = useRef();
-  // use the productId and get the product quantity from the Shopping-Cart Context
 
   return (
     <>

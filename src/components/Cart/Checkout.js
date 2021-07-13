@@ -44,6 +44,14 @@ const Checkout = () => {
     Alert.info('Removed product from cart', 4000);
   };
 
+  // function to calculate total price of Products
+  const calcTotalPrice = () => {
+    return cartState.reduce(
+      (total, product) => total + product.price * product.qty,
+      0
+    );
+  };
+
   return (
     <div>
       <Panel>
@@ -79,7 +87,13 @@ const Checkout = () => {
             ))}
           </tbody>
 
-          <tfoot>Total</tfoot>
+          <tfoot>
+            <tr>
+              <td>
+                <h4>{`Total: USD ${calcTotalPrice()}.00`}</h4>
+              </td>
+            </tr>
+          </tfoot>
         </StyledTable>
       </Panel>
     </div>

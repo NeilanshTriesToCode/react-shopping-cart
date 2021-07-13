@@ -46,7 +46,19 @@ function shoppingCartReducer(prevState, action) {
       );
     }
     case 'REDUCE_QTY': {
-      // decrement product quantity by 1
+      // get product whose quantity has to be reduced
+      const productInCart = prevState.find(
+        product => product.id === action.productInfo.id
+      );
+
+      // if the quantity of this product is already 0, delete it from the cart
+      if (productInCart.qty === 1) {
+        return prevState.filter(
+          product => product.id !== action.productInfo.id
+        );
+      }
+
+      // else, decrement product quantity by 1 (when qty >= 1)
       return prevState.map(product =>
         product.id === action.productInfo.id
           ? { ...product, qty: product.qty - 1 }
