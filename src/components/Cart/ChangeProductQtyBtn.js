@@ -7,14 +7,14 @@ const ChangeProductQtyBtn = ({ id, productQty, addQty, reduceQty }) => {
 
   return (
     <>
-      <Button size="xs" onClick={() => addQty(id)}>
-        <Icon icon="plus" />
+      <Button size="xs" onClick={() => reduceQty(id)}>
+        <Icon icon="minus" />
       </Button>
       <span ref={reff} style={{ padding: '10px' }}>
         {productQty}
       </span>
-      <Button size="xs" onClick={() => reduceQty(id)}>
-        <Icon icon="minus" />
+      <Button size="xs" onClick={() => addQty(id)}>
+        <Icon icon="plus" />
       </Button>
     </>
   );

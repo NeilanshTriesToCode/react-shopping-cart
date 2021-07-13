@@ -1,11 +1,19 @@
 // styles for Checkout page
 import styled from 'styled-components';
+import { CardWrapper } from '../../styled';
 
-export const StyledTable = styled.table`
-  border-collapse: collapse;
-  padding: 5px;
+export const TableWrapper = styled(CardWrapper)`
+  margin-left: auto;
+  margin-right: auto;
+  align-content: center;
+  width: 70%;
 
-  &.checkout {
+  table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    padding: 5px;
+
     thead {
       font-size: 25px;
       border-bottom: 1pt solid black;
@@ -14,6 +22,10 @@ export const StyledTable = styled.table`
     th {
       padding-left: 15px;
       padding-bottom: 3px;
+    }
+
+    tbody > tr {
+      border-bottom: 0.5pt solid lightgrey;
     }
 
     tr {
@@ -25,5 +37,7 @@ export const StyledTable = styled.table`
     }
   }
 `;
+
+export const StyledTable = styled.table``;
 
 export const StyledTHead = styled.table``;
