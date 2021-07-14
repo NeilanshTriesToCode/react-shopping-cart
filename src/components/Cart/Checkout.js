@@ -5,7 +5,8 @@ import { Alert, Button, Icon, Panel } from 'rsuite';
 import { useShoppingCart } from '../../misc/shoppingCart.context';
 
 import ChangeProductQtyBtn from './ChangeProductQtyBtn';
-import { StyledTable, TableWrapper } from './Checkout.styled';
+import { StyledDivider } from '../../styled';
+import { TableWrapper } from './Checkout.styled';
 import ShowProductInfo from './ShowProductInfo';
 
 const Checkout = () => {
@@ -53,48 +54,51 @@ const Checkout = () => {
   };
 
   return (
-    <TableWrapper>
-      <table>
-        <thead>
-          <tr>
-            <th> </th>
-            <th>Name </th>
-            <th>Price </th>
-            <th>Quantity </th>
-            <th> </th>
-          </tr>
-        </thead>
+    <>
+      <StyledDivider />
+      <TableWrapper>
+        <table>
+          <thead>
+            <tr>
+              <th> </th>
+              <th>Name </th>
+              <th>Price </th>
+              <th>Quantity </th>
+              <th> </th>
+            </tr>
+          </thead>
 
-        <tbody>
-          {cartState.map(product => (
-            <tr key={product.id}>
-              <ShowProductInfo id={product.id} productPrice={product.price} />
+          <tbody>
+            {cartState.map(product => (
+              <tr key={product.id}>
+                <ShowProductInfo id={product.id} productPrice={product.price} />
+                <td>
+                  <ChangeProductQtyBtn
+                    id={product.id}
+                    productQty={product.qty}
+                    addQty={handleAddQty}
+                    reduceQty={handleReduceQty}
+                  />
+                </td>
+                <td>
+                  <Button onClick={() => removeProduct(product.id)}>
+                    <Icon icon="close-circle" />
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+
+          <tfoot>
+            <tr>
               <td>
-                <ChangeProductQtyBtn
-                  id={product.id}
-                  productQty={product.qty}
-                  addQty={handleAddQty}
-                  reduceQty={handleReduceQty}
-                />
-              </td>
-              <td>
-                <Button onClick={() => removeProduct(product.id)}>
-                  <Icon icon="close-circle" />
-                </Button>
+                <h4>{`Total: USD ${calcTotalPrice()}.00`}</h4>
               </td>
             </tr>
-          ))}
-        </tbody>
-
-        <tfoot>
-          <tr>
-            <td>
-              <h4>{`Total: USD ${calcTotalPrice()}.00`}</h4>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-    </TableWrapper>
+          </tfoot>
+        </table>
+      </TableWrapper>
+    </>
   );
 };
 
