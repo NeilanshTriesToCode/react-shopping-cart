@@ -6,7 +6,7 @@ import { useShoppingCart } from '../../misc/shoppingCart.context';
 
 import ChangeProductQtyBtn from './ChangeProductQtyBtn';
 import { StyledDivider } from '../../styled';
-import { TableWrapper } from './Checkout.styled';
+import { CheckoutTitle, TableWrapper } from './Checkout.styled';
 import ShowProductInfo from './ShowProductInfo';
 
 const Checkout = () => {
@@ -56,6 +56,9 @@ const Checkout = () => {
   return (
     <>
       <StyledDivider />
+      <CheckoutTitle>
+        <h3>Checkout</h3>
+      </CheckoutTitle>
       <TableWrapper>
         <table>
           <thead>

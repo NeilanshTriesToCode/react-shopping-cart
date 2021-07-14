@@ -2,6 +2,17 @@
 import styled from 'styled-components';
 import { CardWrapper } from '../../styled';
 
+export const CheckoutTitle = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  margin-bottom: 15px;
+  text-align: normal;
+  h3 {
+    color: slategrey;
+  }
+`;
+
 export const TableWrapper = styled(CardWrapper)`
   margin-left: auto;
   margin-right: auto;
