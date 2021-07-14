@@ -53,11 +53,21 @@ const Checkout = () => {
     );
   };
 
+  // function to reset Cart
+  const resetCart = () => {
+    dispatch({ type: 'RESET_CART' });
+  };
+
   return (
     <>
       <StyledDivider />
       <CheckoutTitle>
         <h3>Checkout</h3>
+        <div style={{ float: 'right', marginLeft: 'auto' }}>
+          <Button color="orange" onClick={resetCart}>
+            <Icon icon="cart-arrow-down" /> Reset Cart
+          </Button>
+        </div>
       </CheckoutTitle>
       <TableWrapper>
         <table>

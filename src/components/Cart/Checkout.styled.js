@@ -1,8 +1,10 @@
 // styles for Checkout page
 import styled from 'styled-components';
+import { Button } from 'rsuite';
 import { CardWrapper } from '../../styled';
 
 export const CheckoutTitle = styled.div`
+  display: flex;
   margin-left: auto;
   margin-right: auto;
   width: 70%;
@@ -10,6 +12,10 @@ export const CheckoutTitle = styled.div`
   text-align: normal;
   h3 {
     color: slategrey;
+  }
+
+  Button {
+    float: right;
   }
 `;
 
