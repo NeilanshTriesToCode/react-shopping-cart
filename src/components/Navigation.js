@@ -9,6 +9,7 @@ const Navigation = () => {
 
   // list of Nav links
   const LINKS = [
+    { to: '/', linkName: 'Home' },
     { to: '/categories', linkName: 'Categories' },
     { to: '/products/allProducts', linkName: 'Products' },
   ];
