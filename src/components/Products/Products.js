@@ -2,7 +2,7 @@
 // This Component also allows users to use filters for their search
 
 import React, { useState, useCallback, useEffect } from 'react';
-import { Loader } from 'rsuite';
+import { Loader, SelectPicker } from 'rsuite';
 import { useParams } from 'react-router';
 import { StyledDivider } from '../../styled';
 import ProductCard from './ProductCard';
@@ -22,6 +22,14 @@ function getInitialProducts(data, cid) {
   return newProducts;
 }
 
+const stockFilters = [
+  {
+    label: 'In stock only',
+    value: 'In stock only',
+    role: 'Master',
+  },
+];
+
 const Products = () => {
   // getting categoryId from the page URL
   const { cid } = useParams();
@@ -38,20 +46,31 @@ const Products = () => {
     <div>
       {isLoading && <Loader speed="normal" center content="loading.." />}
       <StyledDivider />
-      {!isLoading &&
-        products.map(product => (
-          <ProductCard
-            key={product.id}
-            productId={product.id}
-            name={product.name}
-            productPrice={product.price}
-            currency={product.currency}
-            delivery={product.delivery}
-            inStock={product.inStock}
-            thumbnail={product.thumbnail}
-            categoryId={product.categoryId}
-          />
-        ))}
+      <div>
+        {!isLoading && (
+            <div>
+              <SelectPicker
+                data={stockFilters}
+                appearance="default"
+                placeholder="Default"
+                style={{ width: 224 }}
+              />
+            </div>
+          ) &&
+          products.map(product => (
+            <ProductCard
+              key={product.id}
+              productId={product.id}
+              name={product.name}
+              productPrice={product.price}
+              currency={product.currency}
+              delivery={product.delivery}
+              inStock={product.inStock}
+              thumbnail={product.thumbnail}
+              categoryId={product.categoryId}
+            />
+          ))}
+      </div>
     </div>
   );
 };
