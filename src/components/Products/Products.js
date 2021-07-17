@@ -2,7 +2,7 @@
 // This Component also allows users to use filters for their search
 
 import React, { useState, useCallback, useEffect } from 'react';
-import { Loader, SelectPicker } from 'rsuite';
+import { Loader, CheckboxGroup, Checkbox, SelectPicker } from 'rsuite';
 import { useParams } from 'react-router';
 import { StyledDivider } from '../../styled';
 import ProductCard from './ProductCard';
@@ -26,7 +26,21 @@ const stockFilters = [
   {
     label: 'In stock only',
     value: 'In stock only',
-    role: 'Master',
+  },
+];
+
+const pricingFilters = [
+  {
+    label: 'below $50',
+    value: 'below $50',
+  },
+  {
+    label: '$50 - $100',
+    value: '$50 - $100',
+  },
+  {
+    label: 'above $100',
+    value: 'above $100',
   },
 ];
 
@@ -43,20 +57,28 @@ const Products = () => {
   );
 
   return (
-    <div>
+    <>
       {isLoading && <Loader speed="normal" center content="loading.." />}
       <StyledDivider />
+
       <div>
-        {!isLoading && (
-            <div>
-              <SelectPicker
-                data={stockFilters}
-                appearance="default"
-                placeholder="Default"
-                style={{ width: 224 }}
-              />
-            </div>
-          ) &&
+        <h4>Filters</h4>
+        <p>Availability:</p>
+        <SelectPicker
+          data={stockFilters}
+          searchable={false}
+          size="md"
+          style={{ width: '180px' }}
+        />
+        <p>Pricing:</p>
+        <SelectPicker
+          data={pricingFilters}
+          searchable={false}
+          style={{ width: '180px' }}
+        />
+      </div>
+      <div>
+        {!isLoading &&
           products.map(product => (
             <ProductCard
               key={product.id}
@@ -71,7 +93,7 @@ const Products = () => {
             />
           ))}
       </div>
-    </div>
+    </>
   );
 };
 
