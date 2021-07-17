@@ -2,8 +2,10 @@
 // This Component also allows users to use filters for their search
 
 import React, { useState, useCallback, useEffect } from 'react';
-import { Loader, CheckboxGroup, Checkbox, SelectPicker } from 'rsuite';
+import { Loader, SelectPicker, Radio, RadioGroup } from 'rsuite';
 import { useParams } from 'react-router';
+import { useFilters } from '../../misc/useFilters';
+
 import { StyledDivider } from '../../styled';
 import ProductCard from './ProductCard';
 
@@ -32,7 +34,7 @@ const stockFilters = [
 const pricingFilters = [
   {
     label: 'below $50',
-    value: 'below $50',
+    value: 'BELOW $50',
   },
   {
     label: '$50 - $100',
@@ -40,7 +42,7 @@ const pricingFilters = [
   },
   {
     label: 'above $100',
-    value: 'above $100',
+    value: 'ABOVE $100',
   },
 ];
 
@@ -56,6 +58,17 @@ const Products = () => {
     getInitialProducts(productsData, cid)
   );
 
+  // use custom-hook for filters
+  const { currentProducts, filterDispatch } = useFilters();
+
+  // function to handle "Availability" filter
+  const handleAvailabilityFilter = value => {
+    // calling dispatch for filters
+    filterDispatch({ filterType: 'AVAILABILITY', filterAction: value });
+
+    // updating products state
+  };
+
   return (
     <>
       {isLoading && <Loader speed="normal" center content="loading.." />}
@@ -63,20 +76,24 @@ const Products = () => {
 
       <div>
         <h4>Filters</h4>
-        <p>Availability:</p>
-        <SelectPicker
-          data={stockFilters}
-          searchable={false}
-          size="md"
-          style={{ width: '180px' }}
-        />
-        <p>Pricing:</p>
-        <SelectPicker
-          data={pricingFilters}
-          searchable={false}
-          style={{ width: '180px' }}
-        />
+        <RadioGroup name="AVAILABILITY" onChange={handleAvailabilityFilter}>
+          <p>Availability:</p>
+          <Radio value="IN STOCK ONLY">In stock only</Radio>
+        </RadioGroup>
+
+        <RadioGroup
+          name="PRICING"
+          onChange={(
+            value // eslint-disable-next-line no-console
+          ) => console.log(value)}
+        >
+          <p>Pricing:</p>
+          <Radio value="BELOW $50">Below $50</Radio>
+          <Radio value="$50 - $100">$50 - $100</Radio>
+          <Radio value="ABOVE $100">Above $100</Radio>
+        </RadioGroup>
       </div>
+
       <div>
         {!isLoading &&
           products.map(product => (
