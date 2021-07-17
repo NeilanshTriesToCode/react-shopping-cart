@@ -53,13 +53,10 @@ const Products = () => {
   // state for loading
   const [isLoading, setIsLoading] = useState(false);
 
-  // initial state for products
-  const [products, setProducts] = useState(
+  // use custom-hook for filters
+  const [currentProducts, filterDispatch] = useFilters(
     getInitialProducts(productsData, cid)
   );
-
-  // use custom-hook for filters
-  const [currentProducts, filterDispatch] = useFilters();
 
   // function to handle "Availability" filter
   const handleAvailabilityFilter = value => {
@@ -69,17 +66,17 @@ const Products = () => {
       filterAction: value,
     });
 
-    // updating products state
-    setProducts(currentProducts);
     // eslint-disable-next-line no-console
-    console.log(products);
+    console.log(currentProducts);
   };
 
   // function to handle "Availability" filter
   const handlePricingFilter = value => {
     // calling dispatch for filters
     filterDispatch({ filterType: 'PRICING', filterAction: value });
-    // updating products state
+
+    // eslint-disable-next-line no-console
+    console.log(currentProducts);
   };
 
   return (
@@ -109,7 +106,7 @@ const Products = () => {
 
       <div>
         {!isLoading &&
-          products.map(product => (
+          currentProducts.map(product => (
             <ProductCard
               key={product.id}
               productId={product.id}

@@ -1,6 +1,6 @@
 // custom-hook built around the useReducer() hook to apply filters to Products
 import { useReducer } from 'react';
-import initialProducts from '../Databases/products.json';
+// import initialProducts from '../Databases/products.json';
 
 // reducer function for the custom-hook useFilters()
 // productsState consists of products currently shown on the Products page
@@ -43,6 +43,6 @@ function filtersReducer(productsState, action) {
 }
 
 // custom-hook built around the useReducer() hook to manage filters
-export const useFilters = () => {
+export const useFilters = initialProducts => {
   return useReducer(filtersReducer, initialProducts);
 };
