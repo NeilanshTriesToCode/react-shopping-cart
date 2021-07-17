@@ -59,13 +59,26 @@ const Products = () => {
   );
 
   // use custom-hook for filters
-  const { currentProducts, filterDispatch } = useFilters();
+  const [currentProducts, filterDispatch] = useFilters();
 
   // function to handle "Availability" filter
   const handleAvailabilityFilter = value => {
     // calling dispatch for filters
-    filterDispatch({ filterType: 'AVAILABILITY', filterAction: value });
+    filterDispatch({
+      filterType: 'AVAILABILITY',
+      filterAction: value,
+    });
 
+    // updating products state
+    setProducts(currentProducts);
+    // eslint-disable-next-line no-console
+    console.log(products);
+  };
+
+  // function to handle "Availability" filter
+  const handlePricingFilter = value => {
+    // calling dispatch for filters
+    filterDispatch({ filterType: 'PRICING', filterAction: value });
     // updating products state
   };
 
@@ -83,14 +96,14 @@ const Products = () => {
 
         <RadioGroup
           name="PRICING"
-          onChange={(
-            value // eslint-disable-next-line no-console
-          ) => console.log(value)}
+          onChange={value => {
+            handlePricingFilter(value);
+          }}
         >
           <p>Pricing:</p>
-          <Radio value="BELOW $50">Below $50</Radio>
-          <Radio value="$50 - $100">$50 - $100</Radio>
-          <Radio value="ABOVE $100">Above $100</Radio>
+          <Radio value="BELOW_$50">Below $50</Radio>
+          <Radio value="$50-$100">$50 - $100</Radio>
+          <Radio value="ABOVE_$100">Above $100</Radio>
         </RadioGroup>
       </div>
 

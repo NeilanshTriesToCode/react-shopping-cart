@@ -1,5 +1,6 @@
 // custom-hook built around the useReducer() hook to apply filters to Products
 import { useReducer } from 'react';
+import initialProducts from '../Databases/products.json';
 
 // reducer function for the custom-hook useFilters()
 // productsState consists of products currently shown on the Products page
@@ -20,13 +21,13 @@ function filtersReducer(productsState, action) {
 
     case 'PRICING': {
       switch (action.filterAction) {
-        case 'BELOW $50':
+        case 'BELOW_$50':
           return productsState.filter(product => product.price < 50);
-        case '$50 - $100':
+        case '$50-$100':
           return productsState.filter(
             product => product.price >= 50 && product.price <= 100
           );
-        case 'ABOVE $100':
+        case 'ABOVE_$100':
           return productsState.filter(product => product.price > 100);
         default:
           return productsState;
@@ -42,6 +43,6 @@ function filtersReducer(productsState, action) {
 }
 
 // custom-hook built around the useReducer() hook to manage filters
-export const useFilters = initialProducts => {
+export const useFilters = () => {
   return useReducer(filtersReducer, initialProducts);
 };
