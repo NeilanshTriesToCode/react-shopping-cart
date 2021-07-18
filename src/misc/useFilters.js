@@ -5,44 +5,30 @@ import { useReducer } from 'react';
 // reducer function for the custom-hook useFilters()
 // productsState consists of products currently shown on the Products page
 // applying filters would affect the state of products
-function filtersReducer(productsState, action) {
+function filtersReducer(filterState, action) {
   /*  structure of "action":
          eg: action = {
-                filterType: "PRICING",
-                filterAction:  "BELOW $50"
+                filterAction: "SET",
+                filterType:  "BELOW_$50",
+                applyFilter: true/false
             }
         (would require nested-switches)
     */
 
-  switch (action.filterType) {
-    case 'AVAILABILITY': {
-      return productsState.filter(product => product.inStock); // return only products in stock
-    }
-
-    case 'PRICING': {
-      switch (action.filterAction) {
-        case 'BELOW_$50':
-          return productsState.filter(product => product.price < 50);
-        case '$50-$100':
-          return productsState.filter(
-            product => product.price >= 50 && product.price <= 100
-          );
-        case 'ABOVE_$100':
-          return productsState.filter(product => product.price > 100);
-        default:
-          return productsState;
-      }
+  switch (action.filterAction) {
+    case 'SET': {
+      return { ...filterState, [action.filterType]: !action.applyFilter }; // return only products in stock
     }
 
     case 'RESET':
-      return [...productsState];
+      return { ...filterState };
 
     default:
-      return productsState;
+      return filterState;
   }
 }
 
 // custom-hook built around the useReducer() hook to manage filters
-export const useFilters = initialProducts => {
-  return useReducer(filtersReducer, initialProducts);
+export const useFilters = initialFilterState => {
+  return useReducer(filtersReducer, initialFilterState);
 };
