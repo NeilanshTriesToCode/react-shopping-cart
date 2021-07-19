@@ -1,12 +1,17 @@
 // React Component that lists products from all Categories (by default)
 // This Component also allows users to use filters for their search
 
-import React, { useState, useCallback, useRef } from 'react';
-import { Button, Icon, Checkbox, CheckboxGroup } from 'rsuite';
+import React, { useCallback, useRef } from 'react';
+import { Button, Checkbox, CheckboxGroup } from 'rsuite';
 import { useParams } from 'react-router';
 import { useFilters } from '../../misc/useFilters';
 
 import { StyledDivider } from '../../styled';
+import {
+  MainWrapper,
+  FiltersWrapper,
+  ProductsWrapper,
+} from './Products.styled';
 import ProductCard from './ProductCard';
 
 import productsData from '../../Databases/products.json'; // hard-coded JSON Products database
@@ -99,60 +104,61 @@ const Products = () => {
   return (
     <>
       <StyledDivider />
+      <MainWrapper>
+        <FiltersWrapper>
+          <h4>Filters</h4>
+          <CheckboxGroup ref={checkboxRef}>
+            <Checkbox
+              value="IN_STOCK_ONLY"
+              checked={filters.IN_STOCK_ONLY}
+              onChange={handleFilters}
+            >
+              In stock only
+            </Checkbox>
+            <Checkbox
+              value="BELOW_$50"
+              checked={filters.BELOW_$50}
+              onChange={handleFilters}
+            >
+              Below $50
+            </Checkbox>
+            <Checkbox
+              value="$50_$100"
+              checked={filters.$50_$100}
+              onChange={handleFilters}
+            >
+              $50 - $100
+            </Checkbox>
+            <Checkbox
+              value="ABOVE_$100"
+              checked={filters.ABOVE_$100}
+              onChange={handleFilters}
+            >
+              Above $100
+            </Checkbox>
+          </CheckboxGroup>
 
-      <div>
-        <h4>Filters</h4>
-        <CheckboxGroup ref={checkboxRef}>
-          <Checkbox
-            value="IN_STOCK_ONLY"
-            checked={filters.IN_STOCK_ONLY}
-            onChange={handleFilters}
-          >
-            In stock only
-          </Checkbox>
-          <Checkbox
-            value="BELOW_$50"
-            checked={filters.BELOW_$50}
-            onChange={handleFilters}
-          >
-            Below $50
-          </Checkbox>
-          <Checkbox
-            value="$50_$100"
-            checked={filters.$50_$100}
-            onChange={handleFilters}
-          >
-            $50 - $100
-          </Checkbox>
-          <Checkbox
-            value="ABOVE_$100"
-            checked={filters.ABOVE_$100}
-            onChange={handleFilters}
-          >
-            Above $100
-          </Checkbox>
-        </CheckboxGroup>
+          <Button color="cyan" size="sm" onClick={() => resetFilters()}>
+            Reset
+          </Button>
+        </FiltersWrapper>
 
-        <Button color="cyan" onClick={() => resetFilters()}>
-          Reset
-        </Button>
-      </div>
-
-      <div>
-        {filteredProducts.map(product => (
-          <ProductCard
-            key={product.id}
-            productId={product.id}
-            name={product.name}
-            productPrice={product.price}
-            currency={product.currency}
-            delivery={product.delivery}
-            inStock={product.inStock}
-            thumbnail={product.thumbnail}
-            categoryId={product.categoryId}
-          />
-        ))}
-      </div>
+        <ProductsWrapper>
+          {filteredProducts.map(product => (
+            <ProductCard
+              key={product.id}
+              productId={product.id}
+              name={product.name}
+              productPrice={product.price}
+              currency={product.currency}
+              delivery={product.delivery}
+              inStock={product.inStock}
+              thumbnail={product.thumbnail}
+              categoryId={product.categoryId}
+            />
+          ))}
+        </ProductsWrapper>
+      </MainWrapper>
     </>
   );
 };

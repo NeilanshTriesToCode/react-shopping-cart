@@ -64,7 +64,7 @@ const Checkout = () => {
       <CheckoutTitle>
         <h3>Checkout</h3>
         <div style={{ float: 'right', marginLeft: 'auto' }}>
-          <Button color="orange" onClick={resetCart}>
+          <Button color="cyan" onClick={resetCart}>
             <Icon icon="cart-arrow-down" /> Reset
           </Button>
         </div>
