@@ -21,6 +21,11 @@ function filtersReducer(filterState, action) {
     }
 
     case 'RESET':
+      // reset every filter to false
+      Object.keys(filterState).forEach(key => {
+        filterState[key] = false;
+      });
+
       return { ...filterState };
 
     default:

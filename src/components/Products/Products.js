@@ -1,8 +1,8 @@
 // React Component that lists products from all Categories (by default)
 // This Component also allows users to use filters for their search
 
-import React, { useState, useCallback } from 'react';
-import { Loader, Checkbox, CheckboxGroup } from 'rsuite';
+import React, { useState, useCallback, useRef } from 'react';
+import { Button, Icon, Checkbox, CheckboxGroup } from 'rsuite';
 import { useParams } from 'react-router';
 import { useFilters } from '../../misc/useFilters';
 
@@ -55,9 +55,6 @@ const Products = () => {
   // getting categoryId from the page URL
   const { cid } = useParams();
 
-  // state for loading
-  const [isLoading, setIsLoading] = useState(false);
-
   // state for filters using custom-hook
   const [filters, filterDispatch] = useFilters({
     IN_STOCK_ONLY: false,
@@ -66,8 +63,12 @@ const Products = () => {
     ABOVE_$100: false,
   });
 
+  const allProducts = getInitialProducts(productsData, cid);
+
   // get filtered products
-  const filteredProducts = getFilteredProducts(productsData, filters);
+  const filteredProducts = getFilteredProducts(allProducts, filters);
+
+  const checkboxRef = useRef();
 
   // function to handle "Availability" filter
   const handleFilters = useCallback(
@@ -87,44 +88,70 @@ const Products = () => {
     [filterDispatch, filters]
   );
 
+  // function to reset filters
+  const resetFilters = useCallback(() => {
+    filterDispatch({ filterAction: 'RESET' });
+
+    // eslint-disable-next-line no-console
+    // console.log(filters);
+  }, [filterDispatch]);
+
   return (
     <>
-      {isLoading && <Loader speed="normal" center content="loading.." />}
       <StyledDivider />
 
       <div>
         <h4>Filters</h4>
-        <CheckboxGroup>
-          <Checkbox value="IN_STOCK_ONLY" onChange={handleFilters}>
+        <CheckboxGroup ref={checkboxRef}>
+          <Checkbox
+            value="IN_STOCK_ONLY"
+            checked={filters.IN_STOCK_ONLY}
+            onChange={handleFilters}
+          >
             In stock only
           </Checkbox>
-          <Checkbox value="BELOW_$50" onChange={handleFilters}>
+          <Checkbox
+            value="BELOW_$50"
+            checked={filters.BELOW_$50}
+            onChange={handleFilters}
+          >
             Below $50
           </Checkbox>
-          <Checkbox value="$50_$100" onChange={handleFilters}>
+          <Checkbox
+            value="$50_$100"
+            checked={filters.$50_$100}
+            onChange={handleFilters}
+          >
             $50 - $100
           </Checkbox>
-          <Checkbox value="ABOVE_$100" onChange={handleFilters}>
+          <Checkbox
+            value="ABOVE_$100"
+            checked={filters.ABOVE_$100}
+            onChange={handleFilters}
+          >
             Above $100
           </Checkbox>
         </CheckboxGroup>
+
+        <Button color="cyan" onClick={() => resetFilters()}>
+          Reset
+        </Button>
       </div>
 
       <div>
-        {!isLoading &&
-          filteredProducts.map(product => (
-            <ProductCard
-              key={product.id}
-              productId={product.id}
-              name={product.name}
-              productPrice={product.price}
-              currency={product.currency}
-              delivery={product.delivery}
-              inStock={product.inStock}
-              thumbnail={product.thumbnail}
-              categoryId={product.categoryId}
-            />
-          ))}
+        {filteredProducts.map(product => (
+          <ProductCard
+            key={product.id}
+            productId={product.id}
+            name={product.name}
+            productPrice={product.price}
+            currency={product.currency}
+            delivery={product.delivery}
+            inStock={product.inStock}
+            thumbnail={product.thumbnail}
+            categoryId={product.categoryId}
+          />
+        ))}
       </div>
     </>
   );
