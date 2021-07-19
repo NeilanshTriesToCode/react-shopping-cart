@@ -94,7 +94,7 @@ const Products = () => {
   );
 
   // function to reset filters
-  const resetFilters = useCallback(() => {
+  const handleResetFilters = useCallback(() => {
     filterDispatch({ filterAction: 'RESET' });
 
     // eslint-disable-next-line no-console
@@ -138,7 +138,7 @@ const Products = () => {
             </Checkbox>
           </CheckboxGroup>
 
-          <Button color="cyan" size="sm" onClick={() => resetFilters()}>
+          <Button color="cyan" size="sm" onClick={handleResetFilters}>
             Reset
           </Button>
         </FiltersWrapper>
