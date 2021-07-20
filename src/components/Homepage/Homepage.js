@@ -1,20 +1,23 @@
-// React Component for Homepage
+// React Component for Homepage which shows Featured Products
 import React from 'react';
 
-import { HomeWrapper } from './Homepage.styled';
-import Navigation from '../Navigation';
-import Title from './Title';
-import CartButton from '../Cart/CartButton';
+import { StyledCarousel } from './Homepage.styled';
+import { StyledDivider } from '../../styled';
+
+import productsData from '../../Databases/products.json';
 
 const Homepage = () => {
   return (
-    <>
-      <HomeWrapper>
-        <Title title="Shopping Cart" subtitle="" />
-        <CartButton />
-      </HomeWrapper>
-      <Navigation />
-    </>
+    <div>
+      <StyledDivider />
+      <StyledCarousel autoplay>
+        <img src={productsData[5].thumbnail} alt="" />
+
+        <img src={productsData[2].thumbnail} alt="" />
+
+        <img src={productsData[3].thumbnail} alt="" />
+      </StyledCarousel>
+    </div>
   );
 };
 

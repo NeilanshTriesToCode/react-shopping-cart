@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import 'rsuite/dist/styles/rsuite-default.css';
 import './styles/main.scss';
 
+import AppHeader from './components/Homepage/AppHeader';
 import Homepage from './components/Homepage/Homepage';
 import Categories from './components/Category/Categories';
 import Products from './components/Products/Products';
@@ -25,13 +26,15 @@ function App() {
     <ShoppingCartProvider>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <Homepage />
+          <AppHeader />
           <Switch>
+            <Route exact path="/" component={Homepage} />
+
             <Route exact path="/categories" component={Categories} />
 
             <Route exact path="/products/:cid" component={Products} />
 
-            <Route eaxct path="/checkout" component={Checkout} />
+            <Route exact path="/checkout" component={Checkout} />
           </Switch>
         </BrowserRouter>
       </ThemeProvider>

@@ -1,9 +1,11 @@
-// styleds for Homepage Component
+// Styled Components for Homepage
 import styled from 'styled-components';
+import { Carousel } from 'rsuite';
 
-export const HomeWrapper = styled.div`
-  text-align: center;
-  display: flex;
-  background-color: black;
-  padding-bottom: 10px;
+export const StyledCarousel = styled(Carousel)`
+  background-color: whitesmoke;
+  width: 800px;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
 `;
