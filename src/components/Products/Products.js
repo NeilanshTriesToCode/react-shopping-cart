@@ -1,7 +1,7 @@
 // React Component that lists products from all Categories (by default)
 // This Component also allows users to use filters for their search
 
-import React, { useCallback, useRef } from 'react';
+import React from 'react';
 import { Button, Checkbox, CheckboxGroup } from 'rsuite';
 import { useParams } from 'react-router';
 import { useFilters } from '../../misc/useFilters';
@@ -35,21 +35,21 @@ function getFilteredProducts(products, filters) {
   // get all products
   let filteredProducts = [...products];
 
-  if (filters.IN_STOCK_ONLY) {
+  if (filters.includes('IN_STOCK_ONLY')) {
     filteredProducts = filteredProducts.filter(product => product.inStock);
   }
 
-  if (filters.BELOW_$50) {
+  if (filters.includes('BELOW_$50')) {
     filteredProducts = filteredProducts.filter(product => product.price < 50);
   }
 
-  if (filters.$50_$100) {
+  if (filters.includes('$50_$100')) {
     filteredProducts = filteredProducts.filter(
       product => product.price >= 50 && product.price <= 100
     );
   }
 
-  if (filters.ABOVE_$100) {
+  if (filters.includes('ABOVE_$100')) {
     filteredProducts = filteredProducts.filter(product => product.price > 100);
   }
 
@@ -61,45 +61,34 @@ const Products = () => {
   const { cid } = useParams();
 
   // state for filters using custom-hook
-  const [filters, filterDispatch] = useFilters({
-    IN_STOCK_ONLY: false,
-    BELOW_$50: false,
-    $50_$100: false,
-    ABOVE_$100: false,
-  });
+  const [filters, filterDispatch] = useFilters([]);
 
   const allProducts = getInitialProducts(productsData, cid);
 
   // get filtered products
   const filteredProducts = getFilteredProducts(allProducts, filters);
 
-  const checkboxRef = useRef();
-
   // function to handle "Availability" filter
-  const handleFilters = useCallback(
-    value => {
-      // calling dispatch for filters
-      // "filters[value]" is true/false depending on current state of the filter.
-      // "value" comes from the name of the Checkbox
-      filterDispatch({
-        filterAction: 'SET',
-        filterType: value,
-        applyFilter: filters[value],
-      });
+  const handleFilters = value => {
+    // calling dispatch for filters
+    // "filters[value]" is true/false depending on current state of the filter.
+    // "value" comes from the name of the Checkbox
+    filterDispatch({
+      filterAction: 'SET',
+      filterName: value,
+    });
 
-      // eslint-disable-next-line no-console
-      // console.log(filters);
-    },
-    [filterDispatch, filters]
-  );
+    // eslint-disable-next-line no-console
+    // console.log(filters);    // DEBUG
+  };
 
   // function to reset filters
-  const handleResetFilters = useCallback(() => {
+  const handleResetFilters = () => {
     filterDispatch({ filterAction: 'RESET' });
 
     // eslint-disable-next-line no-console
-    // console.log(filters);
-  }, [filterDispatch]);
+    // console.log(filters);   // DEBUG
+  };
 
   return (
     <>
@@ -107,33 +96,17 @@ const Products = () => {
       <MainWrapper>
         <FiltersWrapper>
           <h4>Filters</h4>
-          <CheckboxGroup ref={checkboxRef}>
-            <Checkbox
-              value="IN_STOCK_ONLY"
-              checked={filters.IN_STOCK_ONLY}
-              onChange={handleFilters}
-            >
+          <CheckboxGroup value={filters}>
+            <Checkbox value="IN_STOCK_ONLY" onChange={handleFilters}>
               In stock only
             </Checkbox>
-            <Checkbox
-              value="BELOW_$50"
-              checked={filters.BELOW_$50}
-              onChange={handleFilters}
-            >
+            <Checkbox value="BELOW_$50" onChange={handleFilters}>
               Below $50
             </Checkbox>
-            <Checkbox
-              value="$50_$100"
-              checked={filters.$50_$100}
-              onChange={handleFilters}
-            >
+            <Checkbox value="$50_$100" onChange={handleFilters}>
               $50 - $100
             </Checkbox>
-            <Checkbox
-              value="ABOVE_$100"
-              checked={filters.ABOVE_$100}
-              onChange={handleFilters}
-            >
+            <Checkbox value="ABOVE_$100" onChange={handleFilters}>
               Above $100
             </Checkbox>
           </CheckboxGroup>
@@ -144,6 +117,9 @@ const Products = () => {
         </FiltersWrapper>
 
         <ProductsWrapper>
+          {filteredProducts.length < 1 && (
+            <h4 style={{ fontStyle: 'italic' }}>No products found.</h4>
+          )}
           {filteredProducts.map(product => (
             <ProductCard
               key={product.id}

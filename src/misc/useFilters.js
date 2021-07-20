@@ -1,6 +1,6 @@
 // custom-hook built around the useReducer() hook to apply filters to Products
+
 import { useReducer } from 'react';
-// import initialProducts from '../Databases/products.json';
 
 /*
   creating a function which returns the reducer function for filter states.
@@ -14,30 +14,23 @@ function createFiltersReducer(initialState) {
     /*  structure of "action":
          eg: action = {
                 filterAction: "SET",
-                filterType:  "BELOW_$50",
-                applyFilter: true/false
+                filterName:  "BELOW_$50",
             }
         (would require nested-switches)
     */
 
-    // create shallow copy of filterState (never modify the state directly)
-    // to be used when action.filterAction === 'RESET' (see below)
-    const resetFilters = { ...filterState };
-
     switch (action.filterAction) {
       case 'SET': {
-        return { ...filterState, [action.filterType]: !action.applyFilter }; // return only products in stock
+        // check if filter is already applied
+        const isFilterApplied = filterState.includes(action.filterName);
+
+        // remove the filter from array of filters if it's already applied, or add it to the array of the filters
+        return isFilterApplied
+          ? filterState.filter(filterName => filterName !== action.filterName)
+          : [...filterState, action.filterName];
       }
 
       case 'RESET':
-        /*
-        // reset every filter to false
-        Object.keys(resetFilters).forEach(key => {
-          resetFilters[key] = false;
-        });
-        return resetFilters;
-        */
-
         return initialState;
 
       default:
