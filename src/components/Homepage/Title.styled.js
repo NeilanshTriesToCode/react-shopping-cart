@@ -10,7 +10,7 @@ export const TitleWrapper = styled.div`
   h1 {
     color: whitesmoke;
     letter-spacing: 2px;
-    //font-family: 'Abril Fatface';
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: bold;
     font-style: italic;
     // margin-bottom: 15px;
