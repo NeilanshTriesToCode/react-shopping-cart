@@ -13,16 +13,17 @@ export const HomepageWrapper = styled.div`
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     h1 {
-      font-weight: 800;
-      font-size: 40px;
+      font-weight: 100;
+      font-size: 3vw;
     }
   }
 `;
 
 export const StyledCarousel = styled(Carousel)`
   background-color: whitesmoke;
-  width: 800px;
+  width: 50vw;
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 70px;
 `;

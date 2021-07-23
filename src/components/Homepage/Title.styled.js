@@ -9,7 +9,7 @@ export const TitleWrapper = styled.div`
 
   h1 {
     color: whitesmoke;
-    letter-spacing: 2px;
+    font-size: 3vw;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: bold;
     font-style: italic;
