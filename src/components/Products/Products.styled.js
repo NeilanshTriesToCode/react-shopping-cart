@@ -10,7 +10,7 @@ export const FiltersWrapper = styled.div`
   background-color: whitesmoke;
   border: 1pt solid lightgrey;
   border-radius: 5px;
-  width: 15vw;
+  width: 10%;
   margin-left: 40px;
   margin-right: auto;
   padding: 15px;

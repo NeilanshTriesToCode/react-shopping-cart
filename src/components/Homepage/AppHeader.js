@@ -5,7 +5,6 @@ import { HomeWrapper } from './AppHeader.styled';
 import Navigation from '../Navigation';
 import Title from './Title';
 import CartButton from '../Cart/CartButton';
-import FeaturedProducts from './Homepage';
 
 const AppHeader = () => {
   return (
