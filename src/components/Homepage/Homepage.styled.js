@@ -26,4 +26,8 @@ export const StyledCarousel = styled(Carousel)`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 70px;
+
+  img {
+    width: 70%;
+  }
 `;

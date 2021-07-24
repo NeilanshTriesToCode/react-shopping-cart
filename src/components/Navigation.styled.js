@@ -10,7 +10,9 @@ export const NavWrapper = styled.ul`
 `;
 
 export const StyledNavLink = styled(Link)`
-  font-size: 25px;
+  font-size: calc(
+    10px + 1vw
+  ); // at least 10px + 1vw (min-size is 10px when screen size is minimized)
   color: black;
   margin: 0 15px 2px; // center-margin: spacing between each StyledNavLink, last-margin: similar to margin-bottom
   text-decoration: none;

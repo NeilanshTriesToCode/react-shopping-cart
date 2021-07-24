@@ -1,6 +1,7 @@
 // re-usable styles for Components
 import styled from 'styled-components';
 import { Divider } from 'rsuite';
+import media from 'css-in-js-media'; // for responsive design for Styled Components
 
 export const CardGrid = styled.div`
   text-align: center;
@@ -75,5 +76,19 @@ export const CardWrapper = styled.div`
       height: 250px;
       width: 100%;
     }
+  }
+
+  // media queries for responsive design for Styled-Components
+  ${media('>desktop')} {
+    width: 50%;
+  }
+  ${media('<=desktop', '>tablet')} {
+    width: 80%;
+  }
+  ${media('<=tablet', '>phone')} {
+    width: 80%;
+  }
+  ${media('<=phone')} {
+    width: 80%;
   }
 `;
