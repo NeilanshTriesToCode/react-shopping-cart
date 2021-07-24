@@ -105,7 +105,9 @@ const Checkout = () => {
           <tfoot>
             <tr>
               <td>
-                <h4>{`Total: USD ${calcTotalPrice()}.00`}</h4>
+                <h5
+                  style={{ fontSize: 'calc(8px + 1vw)' }}
+                >{`Total: USD ${calcTotalPrice()}.00`}</h5>
               </td>
             </tr>
           </tfoot>

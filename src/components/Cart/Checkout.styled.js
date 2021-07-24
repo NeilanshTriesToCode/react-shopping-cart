@@ -1,6 +1,6 @@
 // styles for Checkout page
 import styled from 'styled-components';
-import { Button } from 'rsuite';
+import media from 'css-in-js-media';
 import { CardWrapper } from '../../styled';
 
 export const CheckoutTitle = styled.div`
@@ -32,7 +32,7 @@ export const TableWrapper = styled(CardWrapper)`
     padding: 5px;
 
     thead {
-      font-size: 25px;
+      font-size: calc(10px + 1vw);
       border-bottom: 1pt solid black;
     }
 
@@ -46,11 +46,39 @@ export const TableWrapper = styled(CardWrapper)`
     }
 
     tr {
-      font-size: 20px;
+      font-size: calc(5px + 1vw);
     }
 
     td {
       padding: 15px;
+    }
+
+    tfoot {
+      td {
+        font-size: calc(10px + 2vw);
+      }
+    }
+
+    ${media('<=desktop', '>tablet')} {
+      width: 100%;
+
+      td {
+        padding: 5px;
+      }
+    }
+    ${media('<=tablet', '>phone')} {
+      width: 80%;
+
+      td {
+        padding: 5px;
+      }
+    }
+    ${media('<=phone')} {
+      width: 80%;
+
+      td {
+        padding: 5px;
+      }
     }
   }
 `;

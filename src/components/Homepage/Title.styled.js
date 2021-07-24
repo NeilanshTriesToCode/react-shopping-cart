@@ -10,9 +10,9 @@ export const TitleWrapper = styled.div`
   h1 {
     color: whitesmoke;
     font-size: calc(20px + 2vw); // min-size is 20px when screen size is reduced
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: bold;
-    font-style: italic;
+    font-family: 'Abril Fatface', cursive;
+    // font-family: 'Playfair Display SC', serif;
+    font-weight: 300;
   }
 
   h3 {
