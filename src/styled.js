@@ -1,6 +1,6 @@
 // re-usable styles for Components
 import styled from 'styled-components';
-import { Divider } from 'rsuite';
+import { Button, Divider } from 'rsuite';
 import media from 'css-in-js-media'; // for responsive design for Styled Components
 
 export const CardGrid = styled.div`
@@ -31,16 +31,21 @@ export const CardWrapper = styled.div`
 
   // class for Product Cards
   &.product-card {
-    height: 500px;
-    width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    height: calc(250px + 18vw);
+    width: calc(250px + 20vw);
 
     .text-container {
+      height: fit-content;
+      width: fit-content;
       h3 {
+        font-size: calc(15px + 1vw);
         color: black;
       }
 
       p {
-        font-size: 17px;
+        font-size: calc(5px + 1vw);
       }
     }
 
@@ -73,8 +78,12 @@ export const CardWrapper = styled.div`
     margin-bottom: 10px;
 
     img {
-      height: 250px;
+      height: 15vw;
       width: 100%;
+    }
+
+    ${media('<=desktop', '>tablet')} {
+      width: 80%;
     }
   }
 
