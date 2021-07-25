@@ -19,7 +19,7 @@ const ShowProductInfo = ({ id, productPrice }) => {
         <img
           src={addedProduct.thumbnail}
           alt="img"
-          style={{ height: '35px', width: '60px' }}
+          style={{ height: '3vw', width: '4vw' }}
         />
       </td>
       <td>{addedProduct.name}</td>

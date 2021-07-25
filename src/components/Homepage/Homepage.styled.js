@@ -21,13 +21,14 @@ export const HomepageWrapper = styled.div`
 
 export const StyledCarousel = styled(Carousel)`
   background-color: whitesmoke;
-  width: 50vw;
+  height: 30vw;
+  width: 55vw;
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 70px;
 
   img {
-    width: 70%;
+    width: 10vw;
   }
 `;

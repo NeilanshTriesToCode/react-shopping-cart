@@ -73,9 +73,10 @@ export const CardWrapper = styled.div`
   }
 
   .img-wrapper {
-    width: 100%;
-    overflow: hidden;
-    margin-bottom: 10px;
+    width: 80%;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
 
     img {
       height: 15vw;

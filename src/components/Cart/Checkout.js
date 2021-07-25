@@ -69,50 +69,56 @@ const Checkout = () => {
           </Button>
         </div>
       </CheckoutTitle>
-      <TableWrapper>
-        <table>
-          <thead>
-            <tr>
-              <th> </th>
-              <th>Name </th>
-              <th>Price </th>
-              <th>Quantity </th>
-              <th> </th>
-            </tr>
-          </thead>
+      {cartState.length < 1 && <h4>You have no items in the cart yet.</h4>}
+      {cartState.length > 0 && (
+        <TableWrapper>
+          <table>
+            <thead>
+              <tr>
+                <th>{}</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>{}</th>
+              </tr>
+            </thead>
 
-          <tbody>
-            {cartState.map(product => (
-              <tr key={product.id}>
-                <ShowProductInfo id={product.id} productPrice={product.price} />
-                <td>
-                  <ChangeProductQtyBtn
+            <tbody>
+              {cartState.map(product => (
+                <tr key={product.id}>
+                  <ShowProductInfo
                     id={product.id}
-                    productQty={product.qty}
-                    addQty={handleAddQty}
-                    reduceQty={handleReduceQty}
+                    productPrice={product.price}
                   />
-                </td>
+                  <td>
+                    <ChangeProductQtyBtn
+                      id={product.id}
+                      productQty={product.qty}
+                      addQty={handleAddQty}
+                      reduceQty={handleReduceQty}
+                    />
+                  </td>
+                  <td>
+                    <Button onClick={() => removeProduct(product.id)}>
+                      <Icon icon="close-circle" />
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+
+            <tfoot>
+              <tr>
                 <td>
-                  <Button onClick={() => removeProduct(product.id)}>
-                    <Icon icon="close-circle" />
-                  </Button>
+                  <h5
+                    style={{ fontSize: 'calc(8px + 1vw)' }}
+                  >{`Total: USD ${calcTotalPrice()}.00`}</h5>
                 </td>
               </tr>
-            ))}
-          </tbody>
-
-          <tfoot>
-            <tr>
-              <td>
-                <h5
-                  style={{ fontSize: 'calc(8px + 1vw)' }}
-                >{`Total: USD ${calcTotalPrice()}.00`}</h5>
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-      </TableWrapper>
+            </tfoot>
+          </table>
+        </TableWrapper>
+      )}
     </>
   );
 };

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import media from 'css-in-js-media';
 
 export const MainWrapper = styled.div`
+  position: relative;
+
   ${media('<=desktop', '>tablet')} {
     width: 20%;
   }

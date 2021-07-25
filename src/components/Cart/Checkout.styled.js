@@ -20,6 +20,7 @@ export const CheckoutTitle = styled.div`
 `;
 
 export const TableWrapper = styled(CardWrapper)`
+  table-layout: auto;
   margin-left: auto;
   margin-right: auto;
   align-content: center;
@@ -37,7 +38,6 @@ export const TableWrapper = styled(CardWrapper)`
     }
 
     th {
-      padding-left: 15px;
       padding-bottom: 3px;
     }
 
@@ -50,6 +50,8 @@ export const TableWrapper = styled(CardWrapper)`
     }
 
     td {
+      text-align: center;
+      //white-space: nowrap;
       padding: 15px;
     }
 
@@ -67,7 +69,7 @@ export const TableWrapper = styled(CardWrapper)`
       }
     }
     ${media('<=tablet', '>phone')} {
-      width: 80%;
+      width: 90%;
 
       td {
         padding: 5px;

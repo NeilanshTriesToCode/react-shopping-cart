@@ -115,11 +115,18 @@ const Products = () => {
             Reset
           </Button>
         </FiltersWrapper>
-
+        {filteredProducts.length < 1 && (
+          <div style={{ textAlign: 'center' }}>
+            <h4
+              style={{
+                fontStyle: 'italic',
+              }}
+            >
+              No products found.
+            </h4>
+          </div>
+        )}
         <ProductsWrapper>
-          {filteredProducts.length < 1 && (
-            <h4 style={{ fontStyle: 'italic' }}>No products found.</h4>
-          )}
           {filteredProducts.map(product => (
             <ProductCard
               key={product.id}

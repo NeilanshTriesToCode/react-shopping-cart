@@ -58,5 +58,85 @@
     "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/61kIoNSe3VL._SL1500_.jpg",
     "inStock": true,
     "categoryId": "xasgy42fa"
+  },
+  {
+    "id": "7c",
+    "name": "JBL Go 3 Bluetooth Speaker",
+    "price": 40,
+    "currency": "USD",
+    "delivery": true,
+    "thumbnail": "https://www.bhphotovideo.com/images/images2500x2500/jbl_jblgo3bluam_go_3_portable_bluetooth_1583007.jpg",
+    "inStock": true,
+    "categoryId": "xzymm35en"
+  },
+  {
+    "id": "8c",
+    "name": "beats Pill",
+    "price": 60,
+    "currency": "USD",
+    "delivery": true,
+    "thumbnail": "https://target.scene7.com/is/image/Target/GUEST_432687d2-d345-44dd-aa00-920a0bc4759d?wid=488&hei=488&fmt=pjpeg",
+    "inStock": false,
+    "categoryId": "xzymm35en"
+  },
+  {
+    "id": "9c",
+    "name": "Bose Soundlink II",
+    "price": 80,
+    "currency": "USD",
+    "delivery": false,
+    "thumbnail": "https://www.bhphotovideo.com/images/images2000x2000/bose_752195_0200_soundlink_color_ii_bluetooth_1282068.jpg",
+    "inStock": true,
+    "categoryId": "xzymm35en"
+  },
+  {
+    "id": "10c",
+    "name": "JBL Flip 5",
+    "price": 105,
+    "currency": "USD",
+    "delivery": true,
+    "thumbnail": "https://www.okeguys.com/wp-content/uploads/2021/01/JBL-Charge-5.jpg",
+    "inStock": true,
+    "categoryId": "xzymm35en"
+  },
+  {
+    "id": "11d",
+    "name": "HP Z3700 Wireless Mouse",
+    "price": 30,
+    "currency": "USD",
+    "delivery": false,
+    "thumbnail": "https://www.hp.com/us-en/shop/app/assets/images/product/V0L79AA%23ABL/right_facing.png?_=1609927655761",
+    "inStock": true,
+    "categoryId": "mglbeq7271"
+  },
+  {
+    "id": "12d",
+    "name": "Lenovo N700 Dual Touch",
+    "price": 55,
+    "currency": "USD",
+    "delivery": true,
+    "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/61m8xUTmDGL._SL1243_.jpg",
+    "inStock": true,
+    "categoryId": "mglbeq7271"
+  },
+  {
+    "id": "13d",
+    "name": "Logitech Pebble M350",
+    "price": 40,
+    "currency": "USD",
+    "delivery": true,
+    "thumbnail": "http://urbangiz.com/wp-content/uploads/2020/09/logitech-pebble-m350-1-1.png",
+    "inStock": true,
+    "categoryId": "mglbeq7271"
+  },
+  {
+    "id": "14d",
+    "name": "HP Z5000 Wireless Mouse",
+    "price": 45,
+    "currency": "USD",
+    "delivery": true,
+    "thumbnail": "https://hk-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/E/5/E5C13AA-2_T1525411325.png",
+    "inStock": false,
+    "categoryId": "mglbeq7271"
   }
 ]
