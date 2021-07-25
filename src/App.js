@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import 'rsuite/dist/styles/rsuite-default.css';
 import './styles/main.scss';
@@ -25,7 +25,7 @@ function App() {
   return (
     <ShoppingCartProvider>
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
+        <HashRouter>
           <AppHeader />
           <Switch>
             <Route exact path="/" component={Homepage} />
@@ -36,7 +36,7 @@ function App() {
 
             <Route exact path="/checkout" component={Checkout} />
           </Switch>
-        </BrowserRouter>
+        </HashRouter>
       </ThemeProvider>
     </ShoppingCartProvider>
   );
