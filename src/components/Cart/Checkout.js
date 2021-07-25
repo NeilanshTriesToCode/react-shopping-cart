@@ -1,6 +1,6 @@
 // React Component for the Checkout page
-import React from 'react';
-import { Alert, Button, Icon, Panel } from 'rsuite';
+import React, { useCallback } from 'react';
+import { Alert, Button, Icon } from 'rsuite';
 
 import { useShoppingCart } from '../../misc/shoppingCart.context';
 
@@ -14,24 +14,30 @@ const Checkout = () => {
   const { cartState, dispatch } = useShoppingCart();
 
   // function to add product quantity
-  const handleAddQty = productId => {
-    dispatch({
-      type: 'ADD_QTY',
-      productInfo: {
-        id: productId,
-      },
-    });
-  };
+  const handleAddQty = useCallback(
+    productId => {
+      dispatch({
+        type: 'ADD_QTY',
+        productInfo: {
+          id: productId,
+        },
+      });
+    },
+    [dispatch]
+  );
 
   // function to reduce product quantity
-  const handleReduceQty = productId => {
-    dispatch({
-      type: 'REDUCE_QTY',
-      productInfo: {
-        id: productId,
-      },
-    });
-  };
+  const handleReduceQty = useCallback(
+    productId => {
+      dispatch({
+        type: 'REDUCE_QTY',
+        productInfo: {
+          id: productId,
+        },
+      });
+    },
+    [dispatch]
+  );
 
   // function to remove Product
   const removeProduct = productId => {

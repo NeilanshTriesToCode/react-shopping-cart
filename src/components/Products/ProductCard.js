@@ -1,5 +1,5 @@
 // React Component for Product Card, used in the Products Component
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Alert } from 'rsuite';
 import { CardWrapper } from '../../styled';
 import { useShoppingCart } from '../../misc/shoppingCart.context';
@@ -20,14 +20,14 @@ const ProductCard = ({
   const { cartState, dispatch } = useShoppingCart();
 
   // function to add Product to Cart. Sent as a Prop to the AddToCart Component.
-  const addProduct = () => {
+  const addProduct = useCallback(() => {
     dispatch({
       type: 'ADD_PRODUCT',
       productInfo: { id: productId, price: productPrice },
     });
 
     Alert.info('Product added to cart', 4000);
-  };
+  }, [dispatch, productId, productPrice]);
 
   return (
     <>
