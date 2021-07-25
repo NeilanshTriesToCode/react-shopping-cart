@@ -75,7 +75,11 @@ const Checkout = () => {
           </Button>
         </div>
       </CheckoutTitle>
-      {cartState.length < 1 && <h4>You have no items in the cart yet.</h4>}
+      {cartState.length < 1 && (
+        <div style={{ textAlign: 'center' }}>
+          <h4>You have no items in the cart yet.</h4>
+        </div>
+      )}
       {cartState.length > 0 && (
         <TableWrapper>
           <table>
