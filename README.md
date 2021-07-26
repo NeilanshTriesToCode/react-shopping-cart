@@ -2,7 +2,7 @@
 - A simple e-commerce Shopping-Cart app made using React JS.
 
 ## Description:
-Using ReactJS and some external libraries, this app mimics an e-commerce platform, allowing users to browse products and categories, and add products in their cart.
+Using ReactJS and some external libraries, this app mimics an e-commerce platform, allowing users to browse categories and products, and add them in their cart.
 
 ## Features:
 - Allows user to browse through different Categories and Products.
@@ -29,7 +29,7 @@ Using ReactJS and some external libraries, this app mimics an e-commerce platfor
 - **google-fonts:** For App Title font.
 
 ## Deployment
-Check out the app deployed on GitHub pages, or (here.)[https://neilanshtriestocode.github.io/react-shopping-cart/#/]
+Check out the app deployed on GitHub pages, or [here](https://neilanshtriestocode.github.io/react-shopping-cart/#/).
 
 ## References:
 - https://rsuitejs.com/
