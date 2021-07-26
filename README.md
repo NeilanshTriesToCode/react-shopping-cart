@@ -4,7 +4,7 @@
 ## Description:
 Using ReactJS and some external libraries, this app mimics an e-commerce platform, allowing users to browse products and categories, and add products in their cart.
 
-## Functionalities:
+## Features:
 - Allows user to browse through different Categories and Products.
 - Uses hard-coded JSON documents as Database for Category and Product information.
 - Provides filters to help users find suitable Products.
@@ -19,7 +19,8 @@ Using ReactJS and some external libraries, this app mimics an e-commerce platfor
 
 ## React Hooks used:
 - **useContext and Context API:** Built a *custom-hook*, **useCart()** around the **useContext** hook to share **Cart** state (current Products in the Cart) to all Components.
-- 
+- **useReducer:** Built another *custom-hook* around the **useReducer** hook **useFilters()** to manage states for **filters** applied to Products.
+*Find these files inside the **misc** folder under the **src** directory*.
 
 ## APIs/Libraries used;
 - **rsuitejs:** To use UI Components like **Avatar, Button, Icon, and Carousel**.
