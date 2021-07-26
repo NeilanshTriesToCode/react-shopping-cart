@@ -28,6 +28,9 @@ Using ReactJS and some external libraries, this app mimics an e-commerce platfor
 - **css-in-js-media:** To enable Responsive Design for Components styled using the **styled-components API**.
 - **google-fonts:** For App Title font.
 
+## Deployment
+Check out the app deployed on GitHub pages, or (here.)[https://neilanshtriestocode.github.io/react-shopping-cart/#/]
+
 ## References:
 - https://rsuitejs.com/
 - https://styled-components.com/
